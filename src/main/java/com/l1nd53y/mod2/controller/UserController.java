@@ -10,27 +10,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin("*")
-@RestController
-@RequestMapping("/api/users")
+@CrossOrigin("*") //Cross-origin resource sharing (CORS) "allows you to specify in a flexible way what kind of cross domain requests are authorized"
+@RestController // "Every request handling method of the controller class automatically serializes return objects into HttpResponse"
+@RequestMapping("/api/users") // Used to map web requests to Spring Controller methods
 public class UserController {
 
-    @Autowired
+    @Autowired // allows Spring to resolve and inject collaborating beans into our bean
     private UserRepository userRepository;
 
-    @GetMapping
+    @GetMapping // Annotation for mapping HTTP GET requests onto specific handler methods
     public List<User> getAllUsers(){
         return userRepository.findAll();
     }
 
     // build create user REST API
-    @PostMapping
+    @PostMapping // Annotation for mapping HTTP POST requests onto specific handler methods
     public User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
     // build get user by id REST API
-    @GetMapping("{id}")
+    @GetMapping("{id}") // Annotation for mapping HTTP GET requests onto specific handler methods
     public ResponseEntity<User> getUserById(@PathVariable  long id){
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id:" + id));
@@ -38,14 +38,15 @@ public class UserController {
     }
 
     // build update user REST API
-    @PutMapping("{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id,@RequestBody User userDetails) {
+    @PutMapping("{id}") // Annotation for mapping HTTP PUT requests onto specific handler methods
+    public ResponseEntity<User> updateUser(@PathVariable long id,@RequestBody User userDetails) { //@PathVariable annotation to extract the templated part of the URI (id), @RequestBody maps the HttpRequest body to a transfer or domain object, enabling automatic deserialization of the inbound HttpRequest body onto a Java object
         User updateUser = userRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("User does not exist with id: " + id));
 
         updateUser.setFirstName(userDetails.getFirstName());
         updateUser.setLastName(userDetails.getLastName());
         updateUser.setEmailId(userDetails.getEmailId());
+        updateUser.setPassword(userDetails.getPassword());
 
         userRepository.save(updateUser);
 
@@ -53,7 +54,7 @@ public class UserController {
     }
 
     // build delete user REST API
-    @DeleteMapping("{id}")
+    @DeleteMapping("{id}") // Annotation for mapping HTTP DELETE requests onto specific handler methods.
     public ResponseEntity<HttpStatus> deleteUser(@PathVariable long id){
 
         User user = userRepository.findById(id)
