@@ -1,9 +1,11 @@
 package com.l1nd53y.mod2.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import lombok.*;
+import lombok.Data;
 
 import javax.persistence.*;
 
@@ -12,6 +14,7 @@ import javax.persistence.*;
 @NoArgsConstructor // generates an empty constructor
 @AllArgsConstructor // generates all-args constructor - requires one argument for every field in the class
 @Entity // represents a table in a relational database
+@Data
 @Table(name = "users") // allows you to specify the details of the table
 public class User {
 
@@ -30,5 +33,10 @@ public class User {
 
     @Column(name = "password")
     private String password;
+
+//    @Column(name = "hashed_password")
+//    private String hashedPassword = Hasher.hash(password);
+
+
 
 }

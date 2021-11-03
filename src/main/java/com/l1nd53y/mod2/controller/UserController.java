@@ -3,10 +3,18 @@ package com.l1nd53y.mod2.controller;
 import com.l1nd53y.mod2.exception.ResourceNotFoundException;
 import com.l1nd53y.mod2.model.User;
 import com.l1nd53y.mod2.repository.UserRepository;
+import com.l1nd53y.mod2.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.List;
 
@@ -16,7 +24,15 @@ import java.util.List;
 public class UserController {
 
     @Autowired // allows Spring to resolve and inject collaborating beans into our bean
+    private UserService userService;
+
+    @Autowired
     private UserRepository userRepository;
+
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @GetMapping // Annotation for mapping HTTP GET requests onto specific handler methods
     public List<User> getAllUsers(){
@@ -26,7 +42,7 @@ public class UserController {
     // build create user REST API
     @PostMapping // Annotation for mapping HTTP POST requests onto specific handler methods
     public User createUser(@RequestBody User user) {
-        return userRepository.save(user);
+        return this.userService.save(user);
     }
 
     // build get user by id REST API
@@ -65,4 +81,5 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 
     }
+
 }
