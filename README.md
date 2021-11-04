@@ -1,5 +1,5 @@
 # REST-API-MOD2
-Multiverse Module 2 RESTful API Project using Java, MySQL, CRUD, Postman, Authentication
+Multiverse Module 2 RESTful API Project using Java, Spring, MySQL, CRUD, Postman, Authentication
 
 Resources
 - https://www.javaguides.net/2021/10/spring-boot-crud-rest-api-project-using-IntelliJ-IDEA.html
