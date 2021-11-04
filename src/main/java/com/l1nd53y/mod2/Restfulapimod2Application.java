@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 
 
-@SpringBootApplication(exclude = SecurityAutoConfiguration.class)
+@SpringBootApplication
 public class Restfulapimod2Application {
 
 	public static void main(String[] args) {
@@ -13,3 +13,5 @@ public class Restfulapimod2Application {
 
 	}
 }
+
+//(exclude = SecurityAutoConfiguration.class)
