@@ -27,10 +27,10 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-//    @Bean
-//    public PasswordEncoder encoder() {
-//        return new BCryptPasswordEncoder();
-//    }
+    @Bean
+    public PasswordEncoder encoder() {
+        return new BCryptPasswordEncoder();
+    }
 
     @GetMapping // Annotation for mapping HTTP GET requests onto specific handler methods
     public List<User> getAllUsers(){
