@@ -15,8 +15,6 @@ import java.util.List;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.util.List;
-
 @CrossOrigin("*") //Cross-origin resource sharing (CORS) "allows you to specify in a flexible way what kind of cross domain requests are authorized"
 @RestController // "Every request handling method of the controller class automatically serializes return objects into HttpResponse"
 @RequestMapping("/api/users") // Used to map web requests to Spring Controller methods
