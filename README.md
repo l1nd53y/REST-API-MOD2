@@ -6,4 +6,4 @@ Resources used:
 - https://www.codejava.net/frameworks/spring-boot/spring-boot-security-authentication-with-jpa-hibernate-and-mysql
 - https://spring.io/guides/gs/securing-web/
 
-WIP~ OAuth complete and CRUD working with Postman/MySQL but still attempting to view on localhost:8080
+WIP~ OAuth complete and CRUD working with Postman/MySQL but lost ability to view @ localhost:8080
