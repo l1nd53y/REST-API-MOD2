@@ -1,9 +1,0 @@
-auth0:
-audience: mod2API
-spring:
-security:
-  oauth2:
-  resourceserver:
-    jwt:
-    issuer-uri: https://dev-1nyz7xyl.us.auth0.com/
-
